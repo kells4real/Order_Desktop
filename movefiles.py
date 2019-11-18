@@ -1,6 +1,7 @@
 
 import os, shutil, glob
-
+import time
+import datetime
 user_path = os.path.expanduser('~')
 
 def main():
@@ -409,12 +410,27 @@ def main():
         cs()
         microsoftdocs()
         other()
-            
+        
+        print("Thanks For Kells Using Desktop Cleaner")
+        time.sleep(30)
+        print("Program will now exit in..")
+        time.sleep(1)
+        print('3')
+        time.sleep(1)
+        print('2')
+        time.sleep(1)
+        print('1')
+        time.sleep(1)
+        exit()
+        
     get_srcDir = input('Enter Source Dir.. e.g downloads/files: ')
     get_dstDir = input('Enter Destination Dir.. e.g downloads/files: ')
-            
+    date = datetime.date.today()
     srcDir = f'{user_path}/{get_srcDir}'
-    dstDir = f'{user_path}/{get_dstDir}'
+    dstDir = f'{user_path}/{get_dstDir}/{date}'
+    
+    if os.path.isdir(dstDir) == False: 
+        os.makedirs(dstDir)
 
     moveAllFilesinDir(srcDir, dstDir)
     
