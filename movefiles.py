@@ -7,30 +7,32 @@ user_path = os.path.expanduser('~')
 def main():
     def moveAllFilesinDir(srcDir, dstDir):
         def text():
-            dstDir2 = f'{dstDir}\Text'
-            lists = []
+            dstDir2 = f'{dstDir}\Text' # Text folder path spcified
+            lists = [] # Empty list to count files
                 
-            if os.path.isdir(dstDir2) == False: 
-                os.makedirs(dstDir2)
+            if os.path.isdir(dstDir2) == False: # If the Text directory doesn't already exist in the head folder
+                os.makedirs(dstDir2) # Create the afformentioned folder
                 
-            if os.path.isdir(srcDir) and os.path.isdir(dstDir2) :
+            if os.path.isdir(srcDir) and os.path.isdir(dstDir2): # If source directory and destination directory is a go, then proceed
                         # Iterate over all the files in source   
                 for filePath in glob.glob(srcDir + '/*'):
                             # Move each file to destination Directory
-                    if '.txt' in filePath or '.rtf' in filePath:
-                        lists.append(filePath)
-                        shutil.move(filePath, dstDir2)
-                aall = len(lists)
+                    if '.txt' in filePath or '.rtf' in filePath: # if file path has '.txt' or 'rtf' which are text extentions
+                        lists.append(filePath) # append the file paths to the LIST lists
+                        shutil.move(filePath, dstDir2) # Moves the files from the initial path to the destination path specified
+                aall = len(lists) # Assigns the lenght of the LIST list to aall
                     
-                if aall > 1: 
-                    print (f'{aall} files moved to {dstDir2}')
+                if aall > 1: # If the variable aall which is the lenght of all items iterated through is more than one
+                    print (f'{aall} files moved to {dstDir2}') # This is pluralize. I am open to a better way this can be done like in django though.
                     print()
-                elif aall == 1:
-                    print (f'{aall} file moved to {dstDir2}')
+                elif aall == 1: # else if the variable aall is exactly 1, then singularize
+                    print (f'{aall} file moved to {dstDir2}') # Print affirmation singularized
                     print()
                 else:
-                    print (f'program did not find any file')
+                    print (f'program did not find any file') # else, prints nothing found
                     print()
+                    
+        # All other functions follows the logic as the above function 
                     
         def pictures():
             dstDir2 = f'{dstDir}\Pictures'
@@ -39,7 +41,7 @@ def main():
             if os.path.isdir(dstDir2) == False: 
                 os.makedirs(dstDir2)
                 
-            if os.path.isdir(srcDir) and os.path.isdir(dstDir2) :
+            if os.path.isdir(srcDir) and os.path.isdir(dstDir2):
                         # Iterate over all the files in source   
                 for filePath in glob.glob(srcDir + '/*'):
                             # Move each file to destination Directory
@@ -65,7 +67,7 @@ def main():
             if os.path.isdir(dstDir2) == False: 
                 os.makedirs(dstDir2)
                 
-            if os.path.isdir(srcDir) and os.path.isdir(dstDir2) :
+            if os.path.isdir(srcDir) and os.path.isdir(dstDir2):
                         # Iterate over all the files in source   
                 for filePath in glob.glob(srcDir + '/*'):
                             # Move each file to destination Directory
@@ -396,23 +398,23 @@ def main():
                     print (f'program did not find any file with the give extention (.txt)')
                     print()             
                     
-        text()
-        pictures()
-        audio()
-        compressed()
-        video()
-        shortcut()
-        programs()
-        disc()
-        py()
-        webdocs()
-        pdf()
-        cs()
-        microsoftdocs()
-        other()
+        text() # calls the function for indentifying text files
+        pictures() # calls the function for indentifying picture files
+        audio() # calls the function for indentifying audio files
+        compressed() # calls the function for indentifying compressed files like .rar and .zip
+        video() # calls the function for indentifying video files
+        shortcut() # calls the function for indentifying shortcuts
+        programs() # calls the function for indentifying executional files like .exe
+        disc() # calls the function for indentifying disc files like ISO
+        py() # calls the function for indentifying python files
+        webdocs() # calls the function for indentifying web document files like .html, .php
+        pdf() # calls the function for indentifying pdf files
+        cs() # calls the function for indentifying C# files
+        microsoftdocs() # calls the function for indentifying microsoft docs like word and excel
+        other() # calls the function for indentifying other files that may not have been specified
         
         print("Thanks For Kells Using Desktop Cleaner")
-        time.sleep(30)
+        time.sleep(30) # waits for ten seconds, then exits if the user forgets to close the program after use
         print("Program will now exit in..")
         time.sleep(1)
         print('3')
@@ -423,17 +425,17 @@ def main():
         time.sleep(1)
         exit()
         
-    get_srcDir = input('Enter Source Dir.. e.g downloads/files: ')
-    get_dstDir = input('Enter Destination Dir.. e.g downloads/files: ')
-    date = datetime.date.today()
-    srcDir = f'{user_path}/{get_srcDir}'
-    dstDir = f'{user_path}/{get_dstDir}/{date}'
+    get_srcDir = input('Enter Source Dir.. e.g downloads/files: ') # source directory
+    get_dstDir = input('Enter Destination Dir.. e.g downloads/files: ') # Directory where you'd like to store the moved files
+    date = datetime.date.today() # Date of the current day to get unique folders where files are moved to for easy identification
+    srcDir = f'{user_path}/{get_srcDir}' # Joins the pc user path to the inputed source directory to get the directory specified according to each computer
+    dstDir = f'{user_path}/{get_dstDir}/{date}' # Joins the pc user path to the inputed destination directory to get the directory specified according to each computer
     
     if os.path.isdir(dstDir) == False: 
-        os.makedirs(dstDir)
+        os.makedirs(dstDir) # if the destination path doesn't exist, this creates the given directory
 
-    moveAllFilesinDir(srcDir, dstDir)
+    moveAllFilesinDir(srcDir, dstDir) # calls the main function for this programm
     
 if __name__ == "__main__":
-    main()
+    main() # Runs the program initially by calling the main function
 
