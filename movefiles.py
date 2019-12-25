@@ -43,7 +43,7 @@ def main():
                         # Iterate over all the files in source   
                 for filePath in glob.glob(srcDir + '/*'):
                             # Move each file to destination Directory
-                    if '.jpg' in filePath or '.png' in filePath or '.gif' in filePath or '.jpeg' in filePath or '.JPG' in filePath or '.JPEG' in filePath:
+                    if '.jpg' in filePath or '.png' in filePath or '.gif' in filePath or '.jpeg' in filePath or '.JPG' in filePath or '.JPEG' in filePath or '.svg' in filePath:
                         lists.append(filePath)
                         shutil.move(filePath, dstDir2)
                 aall = len(lists)
